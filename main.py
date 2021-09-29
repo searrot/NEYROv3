@@ -145,13 +145,21 @@ class Checker():
     
     
     def message(self):
-        print('DOGE ИЛИ SHIBA распознан')
-        bot.send_message('293125099', 'DOGE ИЛИ SHIBA распознан')
+        print(f'{self.trig} распознан')
+     
+        bot.send_message('293125099', f'{self.trig} распознан')
         r = requests.get('http://45.137.64.175:2001/ZldaOUMyTlBiU1hFdWpYRkZUbUFFNjdv/SHIB')
-        bot.send_message('488664136', 'DOGE ИЛИ SHIBA распознан')
+        bot.send_message('488664136', f'{self.trig} распознан')
 
+        
+def main():
+    try:
+        checker = Checker(triggers, batch_size, image_size, image_path, dataset_image_path)
+        checker.connect()
+        checker.start_cycle()
+    except:
+        bot.send_message('293125099', 'Перезапуск сервера')
+        bot.send_message('488664136', 'Перезапуск сервера')
+        main()
 if __name__ == "__main__":
-    checker = Checker(triggers, batch_size, image_size, image_path, dataset_image_path)
-    checker.connect()
-    checker.start_cycle()
-
+    main()
