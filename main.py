@@ -1,6 +1,6 @@
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image_dataset_from_directory
-from . import myparser
+import myparser
 import cv2
 import pytesseract 
 import telebot
@@ -15,6 +15,7 @@ image_path = '/projects/NEYROv3/images/ims/'
 dataset_image_path = '/projects/NEYROv3/images/'
 driver_path = '/usr/local/bin/geckodriver'
 model = load_model("/projects/NEYROv1/crypto_checking_network_vID.h5")
+trig = ''
 
 parser = myparser.Parser(link, xpath, image_path, driver_path)
 
@@ -29,7 +30,7 @@ class Checker():
         self.image_size = image_size
         self.image_path = image_path
         self.dataset_image_path = dataset_image_path
-
+        self.trig = trig
 
     def connect(self):
         try:
@@ -45,18 +46,22 @@ class Checker():
         try:
             while True:
                 parser.get_tweet()
+                time.sleep(0.3)
                 if parser.last_time != parser.time_post:
                     parser.driver.implicitly_wait(5)
                     parser.get_image()
+                    time.sleep(0.3)
                     self.tweet_text = parser.get_text()
                     if self.check_text():
                         self.message()
                         parser.last_time = parser.time_post
                         continue 
+                    time.sleep(0.2)
                     if self.check_image_text():
                         self.message()
                         parser.last_time = parser.time_post
                         continue
+                    time.sleep(0.2)
                     if self.check_image():
                         self.message()
                         parser.last_time = parser.time_post
@@ -66,6 +71,7 @@ class Checker():
                     os.remove(f'{self.image_path}{elem}')
                 parser.driver.refresh()
                 parser.driver.implicitly_wait(5)
+                time.sleep(0.1)
         except Exception as e:
             print('_________________________________________________________________________________________________\n')
             print('                              CYCLE ERROR\n')
@@ -77,6 +83,7 @@ class Checker():
         try:
             for trigger in self.triggers:
                 if trigger in self.tweet_text:
+                    self.trig = trigger
                     return True
         except Exception as e:
             print('_________________________________________________________________________________________________\n')
@@ -98,7 +105,14 @@ class Checker():
         try:
             res = model.predict(test_dataset)
             for pic in res:
-                if pic[1] > 0.5 or pic[4] > 0.5 or pic[8] > 0.5:
+                if pic[1] > 0.5:
+                    self.trig = 'babydog'
+                    return True
+                elif pic[4] > 0.5:
+                    self.trig = 'doge'
+                    return True
+                elif pic[8] > 0.5:
+                    self.trig = 'shiba'
                     return True
         except Exception as e:
             print('_________________________________________________________________________________________________\n')
@@ -121,6 +135,7 @@ class Checker():
                 print('-------------------------------------------------------------------------------------------------\n')
                 for trigger in self.triggers:
                     if trigger in self.res:
+                        self.trig = trigger
                         return True
                        
         except Exception as e:
