@@ -130,7 +130,7 @@ class Checker():
     
     def message(self):
         print('DOGE ИЛИ SHIBA распознан')
-        #bot.send_message('293125099', 'DOGE ИЛИ SHIBA распознан')
+        bot.send_message('293125099', 'DOGE ИЛИ SHIBA распознан')
         r = requests.get('http://45.137.64.175:2001/ZldaOUMyTlBiU1hFdWpYRkZUbUFFNjdv/SHIB')
         bot.send_message('488664136', 'DOGE ИЛИ SHIBA распознан')
 
