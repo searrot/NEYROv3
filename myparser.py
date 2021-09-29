@@ -20,7 +20,10 @@ class Parser():
     def connect_driver(self):
         options = Options()
         options.headless = True
+        self.driver.implicitly_wait(5)
+        time.sleep(5)
         self.driver = webdriver.Firefox(executable_path=self.driver_path, options=options)
+        self.driver.implicitly_wait(5)
 
 
     def start(self):
