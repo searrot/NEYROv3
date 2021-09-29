@@ -11,8 +11,8 @@ import requests
 bot = telebot.TeleBot(token="1993230425:AAEqbDCNCDGDcAJ00w1nBmk9loenYbMRcbc")
 link = 'https://twitter.com/nd6q4X6qTYcbZCV'
 xpath = '//article[@data-testid="tweet"]'
-image_path = '/projects/NEYROv2/images/ims/'
-dataset_image_path = '/projects/NEYROv2/images/'
+image_path = '/projects/NEYROv3/images/ims/'
+dataset_image_path = '/projects/NEYROv3/images/'
 driver_path = '/usr/local/bin/geckodriver'
 model = load_model("/projects/NEYROv1/crypto_checking_network_vID.h5")
 
