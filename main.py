@@ -4,7 +4,7 @@ import myparser
 import cv2
 import pytesseract 
 import telebot
-import os
+import os, time
 import requests
 
 #pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
