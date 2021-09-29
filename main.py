@@ -35,6 +35,7 @@ class Checker():
     def connect(self):
         try:
             parser.connect_driver()
+            time.sleep(2)
             parser.start()
         except Exception as e:
             print('_________________________________________________________________________________________________\n')
