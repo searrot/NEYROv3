@@ -78,6 +78,10 @@ class Checker():
             print('                              CYCLE ERROR\n')
             print(f'{e}\n')
             print('_________________________________________________________________________________________________\n')
+            bot.send_message('293125099', 'Перезапуск цикла')
+            bot.send_message('488664136', 'Перезапуск цикла')
+            parser.last_time = 0
+            self.start_cycle()
                 
 
     def check_text(self):
@@ -153,13 +157,12 @@ class Checker():
 
         
 def main():
-    try:
-        checker = Checker(triggers, batch_size, image_size, image_path, dataset_image_path)
-        checker.connect()
-        checker.start_cycle()
-    except:
-        bot.send_message('293125099', 'Перезапуск сервера')
-        bot.send_message('488664136', 'Перезапуск сервера')
-        main()
+    checker = Checker(triggers, batch_size, image_size, image_path, dataset_image_path)
+    checker.connect()
+    checker.start_cycle()
+
+    bot.send_message('293125099', 'Перезапуск сервера')
+    bot.send_message('488664136', 'Перезапуск сервера')
+    
 if __name__ == "__main__":
     main()
