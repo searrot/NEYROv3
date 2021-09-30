@@ -78,10 +78,6 @@ class Checker():
             print('                              CYCLE ERROR\n')
             print(f'{e}\n')
             print('_________________________________________________________________________________________________\n')
-            bot.send_message('293125099', 'Перезапуск цикла')
-            bot.send_message('488664136', 'Перезапуск цикла')
-            parser.last_time = 0
-            self.start_cycle()
                 
 
     def check_text(self):
