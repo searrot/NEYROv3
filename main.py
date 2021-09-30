@@ -132,7 +132,6 @@ class Checker():
                 self.res = res.lower()
                 print('-------------------------------------------------------------------------------------------------\n')
                 print('                              TESSERACT RESULTS\n')
-                print(f'{self.res}\n')
                 print('-------------------------------------------------------------------------------------------------\n')
                 for trigger in self.triggers:
                     if trigger in self.res:
