@@ -160,9 +160,6 @@ def main():
     checker = Checker(triggers, batch_size, image_size, image_path, dataset_image_path)
     checker.connect()
     checker.start_cycle()
-
-    bot.send_message('293125099', 'Перезапуск сервера')
-    bot.send_message('488664136', 'Перезапуск сервера')
     
 if __name__ == "__main__":
     main()
