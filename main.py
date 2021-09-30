@@ -128,7 +128,7 @@ class Checker():
             for img in images:
                 img = cv2.imread(f'{self.image_path}{img}')
                 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-                res = pytesseract.image_to_string(img, lang='eng', config='--psm 6')
+                res = pytesseract.image_to_string(img)
                 self.res = res.lower()
                 print('-------------------------------------------------------------------------------------------------\n')
                 print('                              TESSERACT RESULTS\n')
